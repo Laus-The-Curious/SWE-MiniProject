@@ -1,10 +1,10 @@
 name: Main Workflow
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   build:
@@ -32,6 +32,7 @@ jobs:
           -Dsonar.projectKey=MiniProject-Swe-2026
           -Dsonar.sources=.
           -Dsonar.java.binaries=.
+          -Dsonar.qualitygate.wait=true
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
