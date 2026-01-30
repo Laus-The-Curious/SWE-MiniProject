@@ -18,8 +18,8 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: '11'
-    - name: Build with Maven
-      run: mvn clean install -f pom.xml
+    - name: compile with java
+      run: javac main.java
     - name: SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@master # Ex: v4.1.0, or sha1, See the latest version at https://github.com/marketplace/actions/official-sonarqube-scan
       with:
