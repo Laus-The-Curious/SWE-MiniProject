@@ -25,7 +25,7 @@ jobs:
       run: javac main.java 
 
     - name: SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@v4 # Pin to v4 instead of master for stability
+      uses: SonarSource/sonarqube-scan-action@master # Pin to v4 instead of master for stability
       with:
         projectBaseDir: .
         args: >
