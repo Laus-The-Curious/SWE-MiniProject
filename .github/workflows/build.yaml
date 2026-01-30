@@ -1,32 +1,37 @@
+name: Main Workflow
+
 on:
-  # Trigger analysis when pushing to your main branches, and when creating a pull request.
   push:
     branches:
       - main
-
   workflow_dispatch:
 
-name: Main Workflow
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
     - name: Set up JDK 11
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4 # Updated to v4
       with:
-        distribution: 'adopt'
+        distribution: 'temurin' # 'adopt' is deprecated; 'temurin' is the modern standard
         java-version: '11'
-    - name: compile with java
-      run: javac main.java
+
+    - name: Compile Java
+      # Ensure your file is actually named 'main.java' (lowercase). 
+      # If it is 'Main.java', this command will fail on Linux.
+      run: javac main.java 
+
     - name: SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@master # Ex: v4.1.0, or sha1, See the latest version at https://github.com/marketplace/actions/official-sonarqube-scan
+      uses: SonarSource/sonarqube-scan-action@v4 # Pin to v4 instead of master for stability
       with:
         projectBaseDir: .
         args: >
           -Dsonar.projectKey=MiniProject-Swe-2026
           -Dsonar.sources=.
+          -Dsonar.java.binaries=.
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
