@@ -21,7 +21,7 @@ jobs:
     - name: compile with java
       run: javac main.java
     - name: SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@v4.1.0 # Ex: v4.1.0, or sha1, See the latest version at https://github.com/marketplace/actions/official-sonarqube-scan
+      uses: SonarSource/sonarqube-scan-action@master # Ex: v4.1.0, or sha1, See the latest version at https://github.com/marketplace/actions/official-sonarqube-scan
       with:
         projectBaseDir: .
         args: >
