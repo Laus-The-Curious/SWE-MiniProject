@@ -1,9 +1,11 @@
 package com.example;
+import java.util.logging.Logger;
 class Main{
+    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+
     public static void main(String[] args) {
-        Logger logger = new Logger();
-        logger.log("Hello, World!");
+        LOGGER.info("Program started");
         int i = 10/1; // This will cause ArithmeticException
-        logger.log(i); 
+        LOGGER.info(String.valueOf(i));
     }
 }
