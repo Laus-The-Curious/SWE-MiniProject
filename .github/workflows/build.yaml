@@ -22,7 +22,7 @@ jobs:
         java-version: '11'
 
     - name: Compile Java
-      run: javac main.java
+      run: javac com/example/main.java
 
     - name: SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v4
